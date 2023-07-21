@@ -5,7 +5,7 @@
 - [1. Preámbulo](#1-preambulo)
 - [2. Resumen del Proyecto](#2-Resumen-del-Proyecto)
 - [3. Desarrollo](#2Desarrollo)
-- [4. Despliegue-de-aplicación](#4-Despliegue-de-aplicación)
+- [4. Despliegue de aplicación](#4-Despliegue-de-aplicación)
 
 ---
 

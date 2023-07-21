@@ -4,7 +4,6 @@
 
 - [1. Preámbulo](#1-preambulo)
 - [2. Desarrollo](#2Desarrollo)
-- [3. Desarrollo](#3-Desarrollo)
 - [4. Despliegue-de-aplicación](#4-Despliegue-de-aplicación)
 
 ---

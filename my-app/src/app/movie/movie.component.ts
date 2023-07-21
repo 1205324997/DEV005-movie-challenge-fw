@@ -3,12 +3,18 @@ import { MovieApiService } from 'src/app/movie-api.service';
 import { genres } from 'src/app/genres';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable, forkJoin } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
+import { OrderByPipe } from '../pipe/order-by.pipe';
 
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  styleUrls: ['./movie.component.css'],
+  providers: [OrderByPipe], 
 })
+
+
 export class MovieComponent implements OnInit {
   movies: any[] = [];
   filteredMovies: any[] = [];
@@ -21,6 +27,9 @@ export class MovieComponent implements OnInit {
   selectedMovie: number | null = null;
   moviePoster: string | null = null;
   selectedMovieIndex: number | null = null;
+  showOrderOption: boolean = true;
+  showSearchContainer: boolean = false;
+
 
   constructor(
     private movieApiService: MovieApiService,
@@ -29,19 +38,45 @@ export class MovieComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.orderBy = ''; 
+    this.selectedGenre = null;
+    this.selectedPopularity = '';
     this.llenarData();
+  } 
+
+  toggleSearchContainer() {
+    this.showSearchContainer = !this.showSearchContainer;
+  
+    // Si el contenedor de búsqueda está visible, mueve el focus al campo de búsqueda
+    if (this.showSearchContainer) {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.focus();
+      }
+    }
   }
+  
 
   llenarData() {
-    this.movieApiService.getMovieDetails().subscribe(
-      (data: any) => {
-        if (data?.results) {
-          this.movies = data.results;
-          this.filteredMovies = [...this.movies];
+    
+      const totalPages = 10;
+      const requests: Observable<any>[] = [];
+
+      for (let page = 1; page <= totalPages; page++){
+        const params = new HttpParams()
+        .set('language' , 'es')
+        .set('page' , page.toString())
+        
+        requests.push(this.movieApiService.getMovieDetails(params));
+      }
+       forkJoin(requests).subscribe(
+        (responses: any[]) => {
+          this.filteredMovies = responses.flatMap((response: any) => response.results);
+          this.movies = [...this.filteredMovies];
           this.orderMovies();
           this.getTopMovies();
-        }
-      },
+          console.log(this.filteredMovies);
+        },
       (error: any) => {
         console.error(error);
       }
@@ -49,18 +84,9 @@ export class MovieComponent implements OnInit {
   }
 
   orderMovies() {
-    if (this.filteredMovies && this.filteredMovies.length > 0) {
-      if (this.orderBy === 'asc') {
-        this.filteredMovies = this.filteredMovies.sort((a, b) =>
-          a.title.localeCompare(b.title)
-        );
-      } else if (this.orderBy === 'desc') {
-        this.filteredMovies = this.filteredMovies.sort((a, b) =>
-          b.title.localeCompare(a.title)
-        );
-      }
-    }
+
   }
+  
 
   movieGenero() {
     if (this.selectedGenre) {
@@ -76,17 +102,22 @@ export class MovieComponent implements OnInit {
 
   moviePopularity() {
     if (this.selectedPopularity === 'populares') {
-      this.filteredMovies = this.movies.filter(
-        (movie: any) => movie.vote_average >= 7.5
-      );
-    } else if (this.selectedPopularity === 'top5') {
+      this.filteredMovies = this.movies
+      .filter((movie: any) => movie.vote_average >= 7.5)
+        .sort((a, b) => b.vote_average - a.vote_average)
+        .slice(0, 30);
+    
+    } else if (this.selectedPopularity === 'top10') {
       this.filteredMovies = this.movies
         .filter((movie: any) => movie.vote_average >= 7.5)
-        .slice(0, 5);
+        .sort((a, b) => b.vote_average - a.vote_average)
+        .slice(0, 10);
     } else {
       this.filteredMovies = this.movies;
     }
     this.orderMovies();
+    console.log(this.filteredMovies);
+    
   }
 
   getTopMovies() {
@@ -99,6 +130,7 @@ export class MovieComponent implements OnInit {
     const searchTerm = this.movieTitle.toLowerCase();
     this.filteredMovies = this.movies.filter((movie: any) =>
       movie.title.toLowerCase().includes(searchTerm)
+      
     );
   }
 
@@ -120,15 +152,16 @@ export class MovieComponent implements OnInit {
         this.filteredMovies[index].poster_path;
     }
   }
+  
 
   home() {
     this.selectedMovie = null;
     this.selectedMovieIndex = null;
     this.moviePoster = null;
     this.filteredMovies = [...this.movies];
-    this.orderBy = ''; // Restablecer el valor de orderBy
-    this.selectedGenre = null; // Restablecer el valor de selectedGenre
-    this.selectedPopularity = ''; // Restablecer el valor de selectedPopularity
+    this.orderBy = '';
+    this.selectedGenre = null;
+    this.selectedPopularity = '';
     this.orderMovies();
   }
 }

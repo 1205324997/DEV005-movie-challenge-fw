@@ -1,30 +1,75 @@
-.containerPrincipal {
-  background-color: rgb(8, 22, 36) !important;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
+body {
+  background-color: rgb(8, 22, 36);
+  margin: 0;
 }
 
-.selectors {
-  padding: 10px;
+#imgInicio{
+  position: absolute;
+  z-index: 5;
+}
+
+.header-container {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
   display: flex;
+  padding: 30%;
+  align-items: center; 
+  position: relative;
+  padding: 30px; 
   justify-content: flex-end;
-  align-items: center;
+  margin-left: 20px;
+  top: -20px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center; 
+}
+
+h1 {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  font-size: 2.5em;
+  margin: 15px;
+  position: absolute; 
+}
+
+#btnInicio {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.linea-solitaria {
+  position: absolute;
+  width: 75%;
+  height: 2px; /* Ajustar el grosor de la línea */
+  background-color: white; /* Ajustar el color de la línea */
+  margin-top: 40px; /* Ajustar el espacio entre los botones y la línea */
+}
+
+#btnInicio:hover {
+  background-color: rgba(65, 140, 214, 0.5); 
 }
 
 .selectors select {
-  margin-left: 10px;
-  background-color: rgba(255, 255, 255, 0.233);
+  margin: 10px;
   border: none;
-  font-size: 16px;
+  font-size: 18px;
+  appearance: none;
   font-family: inherit;
   color: white;
   font-weight: bold;
   cursor: pointer;
   border-radius: 10px;
-  width: 100px;
-  height: 25px;
-  margin-top: 50px;
+  background-color: rgba(65, 139, 214, 0);
+
 }
 
 select option {
@@ -35,103 +80,62 @@ select option {
 
 .selectors select:focus,
 .selectors select:hover {
-  outline: none;
-  background-color: rgba(65, 140, 214, 0.39);
+  background-color: rgba(65, 140, 214, 0.5); 
 }
 
-#btnInicio {
-  margin: 30px;
-  position: absolute;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.233);
-  width: 80px;
-  height: 25px;
-  top: 70px;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#btnInicio:hover {
-  background-color: rgba(65, 140, 214, 0.39);
-}
-
-.input-container {
-  margin: 10px;
-  display: flex;
-  justify-content: center;
+.search-icon-container {
+  position: relative;
+  margin-right: 10px; /* Espacio entre el icono y el input */
 }
 
 .searchContainer {
-  width: 50%;
-  margin: 18px;
-  display: flex;
-  justify-content: center;
-  visibility: visible;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 30px;
+  margin-top: -10px; /* Modifica este valor según tu preferencia */
 }
 
-.form-control {
-  width: 100%;
-  border: 1px solid rgb(8, 22, 36);
-  box-sizing: border-box;
-  padding: 10px;
+
+.search-icon { 
+  padding: 5px;
+  color: white;
+  transform: ;
 }
 
-.container.hide-search .searchContainer {
-  display: none;
+.search-icon:hover {
+  background-color: rgba(65, 140, 214, 0.5); 
+  width: 30px;
+  height: 28px;
+  border-radius: 10px;
 }
 
-.hide-search {
-  display: none;
+
+.movieCard{
+  color: rgba(255, 255, 255, 0.781);
+  margin: 15px;
 }
 
-#title {
-  padding: 6px;
-  font-size: 1em;
-  text-align: center;
+.movieInfo{
+  color: rgba(255, 255, 255, 0.781);
 }
 
-.infoTitle {
-  padding: 6px;
-  font-size: 100%;
-  font-weight: bolder;
-  text-align: center;
-}
-
-.movie-poster {
-  margin: 0px;
-  border-radius: 20px;
-}
-
-.movie-poster:hover {
-  filter: brightness(120%);
-}
-
-.movieCard {
-  border: 1px solid rgb(8, 22, 36);
-  border-radius: 20px;
-  padding: 0px;
-  margin-bottom: 30px;
-  background-color: white;
+.container{
+  margin: 50px;
 }
 
 .movieDetail {
   display: flex;
   padding: 20px;
-  border: 2px solid rgb(8, 22, 36);
+  border: 2px solid  rgb(8, 22, 36);
   max-width: 90%;
   margin: 10px auto;
+  background-color: rgba(255, 255, 255, 0.298);
   border-radius: 10px;
-  background-color: white;
-  margin-top: 70px;
 }
+
 
 .movieContent {
   display: flex;
@@ -154,149 +158,144 @@ select option {
 }
 
 .votos {
-  font-size: 0.9em;
+  font-size: 1em;
   margin-bottom: 10px;
   margin-top: -33px;
-  margin-left: 83%;
-}
-
-.star-icon {
-  color: rgb(255, 225, 0);
+  margin-left: 78%;
 }
 
 .genero {
-  font-size: 0.9em;
+  font-size: 1em;
   margin-bottom: 10px;
 }
 
 .sinopsis {
   text-align: justify;
-  font-size: 0.9em;
+  font-size: 1em;
+  margin-top: 90px;
 }
 
-/* Estilos para pantallas pequeñas */
+
+/*estilos pantallas pequenas*/
 
 @media screen and (max-width: 767px) {
+  .header-container {
+    margin-left: 70px;
+  }
+
+  h1 {
+    top: 12px;
+    font-size: 1em;
+  }
+
   .selectors {
-    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .selectors select {
-    font-size: 14px;
-    width: 70px;
+    font-size: 10px;
+    width: 90px;
     height: 25px;
+    margin: 5px -20px; 
   }
 
   #btnInicio {
-    position: absolute;
-    margin: 30px;
+    margin: 15px; /* Ajustar los márgenes vertical y horizontal del botón de inicio */
     width: 80px;
     height: 25px;
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 10px;
     margin-left: 5px;
+    margin-right: -22px;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Mover el contenedor hacia la derecha */
   }
 
   .searchContainer {
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 80%;
-    height: 30px;
-    margin: 15px;
+    margin-top: -40px; /* Modifica este valor según tu preferencia */
+    margin-left: -70px;
   }
 
-  .container.hide-search .searchContainer {
-    display: none;
+  .search-icon {
+    padding: 5px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute; /* Agregar posición absoluta para que esté contenido en el contenedor */
+    margin-left: -25%;
+    margin-top: 25px;
+    transform: translateY(-50%); /* Centrar verticalmente el icono */
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .form-control {
+    width: 100%;
   }
   
-  .hide-search {
-    display: none;
+  .container{
+    margin-top: -20px;
   }
-  
-  #title {
-    padding: 6px;
-    font-size: 1em;
-    text-align: center;
-  }
-  
-  .infoTitle {
-    padding: 6px;
-    font-size: 3em;
-    font-weight: bolder;
-    text-align: center;
-  }
-  
-  .movie-poster {
-    margin: 0px;
-    border-radius: 20px;
-    text-align: center;
-  }
-  
-  .movie-poster:hover {
-    filter: brightness(120%);
-  }
-  
+
   .movieCard {
     border: 1px solid rgb(8, 22, 36);
     border-radius: 20px;
     padding: 0px;
-    margin-bottom: 30px;
-    background-color: white;
+    width: 50%; /* Ancho para que haya dos elementos en una fila y un espacio de 20px entre ellos */
+    margin-right: 20px; /* Espacio entre las tarjetas */
   }
-  
+
   .movieDetail {
     display: flex;
     padding: 20px;
     border: 2px solid rgb(8, 22, 36);
-    max-width: 90%;
+    max-width: 80%; 
     margin: 10px auto;
     border-radius: 10px;
-    background-color: white;
-    margin-top: 70px;
+    background-color: rgba(255, 255, 255, 0.305);
   }
-  
+
   .movieContent {
     display: flex;
     align-items: flex-start;
+    text-align: justify;
     flex-direction: column;
-    text-align: center;
   }
-  
+
   .imgPortada {
-    flex: 0 0 30%;
     order: 1;
     margin-bottom: 10px;
   }
-  
+
   .movieInfo {
-    flex: 1;
     order: 2;
     text-align: center;
   }
-  
-  .title {
-    font-weight: bolder;
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
+
   .votos {
-    justify-content: center;
-    text-align: center;
-    margin-top: 5px;
-    margin-left: 0%;
+    font-size: 1em;
+    position: relative;
+    margin-left: 0px;
+    margin: 10px;
+
   }
-  
-  .star-icon {
-    color: rgb(255, 225, 0);
-  }
-  
-  .genero {
-    font-size: 0.9em;
-    margin-bottom: 10px;
-  }
-  
+
   .sinopsis {
     text-align: justify;
     font-size: 0.9em;
+    margin-top: -5px;
   }
 }

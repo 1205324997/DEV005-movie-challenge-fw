@@ -4,10 +4,8 @@
 
 - [1. Preámbulo](#1-preambulo)
 - [2. Resumen del proyecto](#2-resumen-del-proyecto)
-- [3. Consideraciones generales](#3-consideraciones-generales)
-- [4. Objetivos de aprendizaje](#4-objetivos-de-aprendizaje)
-- [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-- [6. Consideraciones técnicas](#6-consideraciones-tecnicas)
+- [3. Desarrollo)
+- [4. Despliegue de aplicación)
 
 ---
 
@@ -36,10 +34,10 @@ en Mundo Pelis encontraremos las peliculas ordenadas por Genero, votaciones, Tit
 Para poder hacer facil su despliegue hemos utilizado Netlify
 
 ## 3. Desarrollo
-Para poder tener un idea mas clara primero realizamos historias de usuario usando Projects de GitHub. A continuacion: 
+Para poder tener un idea mas clara primero realizamos historias de usuario usando Projects de GitHub. A continuación: 
 realizamos un prototipo de alta fidelidad de la idea principal de donde partimos:
 ![movie](https://github.com/1205324997/DEV005-movie-challenge-fw/assets/122817494/689fe311-611c-40d8-8dac-a119b7e87df3)
 
-## 4. Despliegue de Aplicacion
+## 4. Despliegue de Aplicación
 En este link podran encontrar y hacer uso de la aplicacion: https://extraordinary-dolphin-1f0233.netlify.app/
 
